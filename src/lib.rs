@@ -769,7 +769,7 @@ where
 
         let will_serialize = output.is_some();
         let output = match output {
-            Some(output) => match std::ffi::CString::new(output) {
+            Some(output) => match std::ffi::CString::new(output.as_ref().as_os_str().as_bytes()) {
                 Ok(output) => output,
                 Err(_) => return Err("Invalid Output for Index"),
             },
