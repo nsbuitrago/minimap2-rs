@@ -731,11 +731,7 @@ where
     /// // Use the previously built index
     /// Aligner::builder().map_ont().with_index("my_index.mmi", None);
     /// ```
-    pub fn with_index<P>(
-        self,
-        path: P,
-        output: Option<&str>,
-    ) -> Result<Aligner<Built>, &'static str>
+    pub fn with_index<P>(self, path: P, output: Option<P>) -> Result<Aligner<Built>, &'static str>
     where
         P: AsRef<Path>,
     {
@@ -749,7 +745,7 @@ where
     pub fn set_index<P>(
         mut self,
         path: P,
-        output: Option<&str>,
+        output: Option<P>,
     ) -> Result<Aligner<Built>, &'static str>
     where
         P: AsRef<Path>,
